@@ -1,0 +1,81 @@
+:root{
+  --bg:#0f1724;
+  --card:#ffffff;
+  --accent:#ff6b6b;
+  --accent2:#ffd166;
+}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif}
+html,body{height:100%;margin:0;background:linear-gradient(135deg,#0f1724 0%, #1f2a44 50%, #3b2b5a 100%);color:#222}
+.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:visible}
+.photo-wrap{position:absolute;inset:0;pointer-events:none;z-index:1}
+.photo{position:absolute;width:120px;height:120px;object-fit:cover;border-radius:14px;box-shadow:0 8px 20px rgba(2,6,23,0.3);border:6px solid rgba(255,255,255,0.9);transition:transform .4s;transform-origin:center;opacity:0.95;animation:floaty 6s ease-in-out infinite}
+.photo.p1{left:6%;top:8%;transform:rotate(-8deg)}
+.photo.p2{right:6%;top:6%;transform:rotate(10deg);width:140px;height:140px}
+.photo.p3{left:3%;bottom:8%;transform:rotate(4deg);width:110px;height:110px}
+.photo.p4{right:4%;bottom:6%;transform:rotate(-6deg);width:130px;height:130px}
+.card{z-index:2;position:relative}
+
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+h1{margin:0 0 8px;font-size:34px;color:#1b1b2f}
+.sub{margin:0 0 18px;color:#555}
+.buttons{display:flex;gap:12px;justify-content:center;margin:16px 0 22px}
+.btn{background:#fff;border:2px solid #eee;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600;transition:transform .12s ease,box-shadow .12s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(11,15,35,0.12)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none}
+.message{font-size:18px;padding:16px;border-radius:12px;background:linear-gradient(90deg,rgba(255,107,107,0.08),rgba(255,209,102,0.06));margin:14px auto;max-width:720px}
+.hidden{display:none}
+.roast-list{list-style:none;padding:0;margin:10px auto 10px;max-width:720px}
+.roast-list li{background:#fff;border-radius:10px;padding:12px 14px;margin:8px 0;text-align:left;box-shadow:0 6px 18px rgba(11,15,35,0.04)}
+.signature{margin-top:18px;color:#333;font-weight:600}
+#confettiCanvas{position:fixed;left:0;top:0;pointer-events:none;z-index:9999}
+
+/* Screen layout */
+.screen{width:920px;max-width:96%;background:linear-gradient(180deg,rgba(255,255,255,0.98),#fff);border-radius:18px;padding:36px;box-shadow:0 10px 40px rgba(2,6,23,0.6);text-align:center}
+.reveal{display:flex;flex-direction:column;align-items:center;gap:18px}
+.main-photo{width:360px;height:360px;object-fit:cover;border-radius:18px;border:10px solid rgba(255,255,255,0.95);box-shadow:0 20px 50px rgba(2,6,23,0.25)}
+.popper{font-size:42px;transform:scale(0);transition:transform .35s ease}
+.popper.show{transform:scale(1.15);}
+
+/* Intro / screen entrance animation */
+.screen{opacity:0;transform:translateY(8px) scale(.995);animation:screenEnter .36s ease forwards}
+@keyframes screenEnter{to{opacity:1;transform:none}}
+
+/* Reveal photo and popper animations */
+.reveal .main-photo{transform:scale(.92);opacity:0}
+/* Trigger photoIn when either the .reveal element gets .show or the reveal screen (.screen) gets .show */
+.reveal.show .main-photo,
+#revealScreen.show .reveal .main-photo{animation:photoIn .55s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes photoIn{0%{transform:scale(.92);opacity:0}60%{transform:scale(1.03);opacity:1}100%{transform:scale(1);opacity:1}}
+.popper.show{animation:popBounce .6s ease}
+@keyframes popBounce{0%{transform:scale(.2) rotate(-10deg)}60%{transform:scale(1.15) rotate(6deg)}100%{transform:scale(1) rotate(0deg)}}
+
+/* Roast list entry animation (staggered via JS delays) */
+.roast-list li{opacity:0;transform:translateY(8px)}
+@keyframes roastIn{to{opacity:1;transform:none}}
+
+/* Button subtle pulse for primary action */
+.btn.primary:active{transform:translateY(-1px) scale(.995)}
+.btn.primary.breathe{animation:breathe 2.2s infinite}
+@keyframes breathe{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
+
+/* Final message container slight pop */
+.message{opacity:0;transform:translateY(6px)}
+.message.show{animation:msgIn .45s ease forwards}
+@keyframes msgIn{to{opacity:1;transform:none}}
+h1{margin:0 0 8px;font-size:34px;color:#1b1b2f}
+.sub{margin:0 0 18px;color:#555}
+.buttons{display:flex;gap:12px;justify-content:center;margin:16px 0 22px}
+.btn{background:#fff;border:2px solid #eee;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600;transition:transform .12s ease,box-shadow .12s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(11,15,35,0.12)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none}
+.message{font-size:18px;padding:16px;border-radius:12px;background:linear-gradient(90deg,rgba(255,107,107,0.08),rgba(255,209,102,0.06));margin:14px auto;max-width:720px}
+.hidden{display:none}
+.roast-list{list-style:none;padding:0;margin:10px auto 10px;max-width:720px}
+.roast-list li{background:#fff;border-radius:10px;padding:12px 14px;margin:8px 0;text-align:left;box-shadow:0 6px 18px rgba(11,15,35,0.04)}
+.signature{margin-top:18px;color:#333;font-weight:600}
+#confettiCanvas{position:fixed;left:0;top:0;pointer-events:none;z-index:9999}
+
+@media (max-width:520px){h1{font-size:22px}.screen{padding:20px}.main-photo{width:200px;height:200px}}
+
+/* Cute floating hearts */
+.card::after{content:"";position:absolute;pointer-events:none;width:200px;height:200px;right:6%;top:10%;background:radial-gradient(circle at 30% 30%, rgba(255,107,107,0.12), transparent 40%), radial-gradient(circle at 70% 70%, rgba(255,209,102,0.09), transparent 40%);border-radius:50%;transform:translateZ(0)}

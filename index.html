@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Friendship Day!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="photo-wrap" aria-hidden="true">
+      <img src="images/photo1.png" alt="photo1" class="photo p1">
+      <img src="images/photo2.jpg" alt="photo2" class="photo p2">
+      <img src="images/photo3.jpg" alt="photo3" class="photo p3">
+      <img src="images/photo4.jpg" alt="photo4" class="photo p4">
+    </div>
+
+    <!-- INTRO SCREEN -->
+    <section id="introScreen" class="card screen">
+      <h1>Happy Friendship Day, Bauni! 💖</h1>
+      <p class="sub">From: <strong>Krish</strong> — professional roaster, full-time bestie.</p>
+      <div class="buttons">
+        <button id="openBtn" class="btn primary">Open 🎁</button>
+      </div>
+      <p class="signature">Go on, click it — I dare you.</p>
+    </section>
+
+    <!-- REVEAL SCREEN -->
+    <section id="revealScreen" class="card screen hidden">
+      <div class="reveal">
+        <div class="popper" id="popper">🎉</div>
+        <img id="mainPhoto" src="images/photo1.png" alt="Bauni" class="main-photo">
+      </div>
+      <div class="buttons">
+        <button id="continueBtn" class="btn primary hidden">Continue ➜</button>
+      </div>
+      <p class="signature">Cute, right? Okay, moving on...</p>
+    </section>
+
+    <!-- ROAST SCREEN -->
+    <section id="roastScreen" class="card screen hidden">
+      <h2>Okay, time for some roasts (you asked for it)</h2>
+      <ul id="roastList" class="roast-list"></ul>
+      <div class="buttons">
+        <button id="nextToFinalBtn" class="btn primary">Finish & Sweet Note</button>
+      </div>
+      <p class="signature">All in good fun — you're my favorite roast target.</p>
+    </section>
+
+    <!-- FINAL SCREEN -->
+    <section id="finalScreen" class="card screen hidden">
+      <h2>For Bauni — A sweet note</h2>
+      <div id="message" class="message"></div>
+      <div class="buttons">
+        <button id="restartBtn" class="btn">View Again</button>
+      </div>
+      <p class="signature">With love, <strong>Krish</strong></p>
+    </section>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
